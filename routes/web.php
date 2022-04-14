@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('index', [HomeController::class, 'index'])->name('index');
+Route::get('test', [HomeController::class, 'test'])->name('test');

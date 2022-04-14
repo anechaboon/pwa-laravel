@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\GetRequestEvent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -18,5 +19,17 @@ Route::get('/', function () {
     return redirect('/index');
 });
 
+Route::get('/trigger/{index}', function ($index) {
+    event(new GetRequestEvent($index));
+});
+
+// call this to send data to app subscribed
+// param index for point index to show data name
+Route::get('/broadcast/{index}',function($index) {
+    broadcast(new GetRequestEvent($index));
+});
+
+
 Route::get('index', [HomeController::class, 'index'])->name('index');
 Route::get('test', [HomeController::class, 'test'])->name('test');
+

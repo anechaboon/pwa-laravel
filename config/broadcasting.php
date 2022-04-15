@@ -37,10 +37,15 @@ return [
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
-                'host' => '127.0.0.1',
+                'host' => '86238872-66-20190226102020.webstarterz.com',
                 'port' => '6001',
                 'schema' => 'http',
-                'useTLS' => true,
+                'useTLS' => false,
+                'encrypted' => false,
+                'curl_options' => [
+                    CURLOPT_SSL_VERIFYHOST => 0,
+                    CURLOPT_SSL_VERIFYPEER => 0,
+                ]
             ],
         ],
 

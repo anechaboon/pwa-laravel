@@ -9,7 +9,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
+use App\Models\{PWAUsers, User};
 
 class GetRequestEvent implements ShouldBroadcast{
 
@@ -29,7 +29,7 @@ class GetRequestEvent implements ShouldBroadcast{
 
     public function broadcastWith()
     {
-        $user = User::get();
+        $user = PWAUsers::get();
         $response['data'] = $user;
         $response['status'] = 200;
         $response['index'] = $this->index;
